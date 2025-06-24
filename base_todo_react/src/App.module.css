@@ -1,7 +1,8 @@
 .main {
     min-height: 60vh;
-    text-align: center;
     padding: 2em;
+    text-align: center;
+
 }
 
 .main h2 {
