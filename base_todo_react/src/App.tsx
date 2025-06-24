@@ -1,9 +1,15 @@
 import React from 'react';
 
+// components
+import Header from './components/Header';
+import Footer from './components/Footer';
+
 function App() {
   return (
     <div>
-      <h1>To Do React</h1>
+      <Header />
+      <h1>Conteudo ....</h1>
+      <Footer />
     </div>
   );
 }
