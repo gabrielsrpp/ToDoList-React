@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState, ChangeEvent, FormEvent, useEffect} from 'react';
 
 // components
 import Header from './components/Header';
@@ -8,6 +8,9 @@ import TaskList from './components/TaskList';
 
 // css 
 import styles from './App.module.css';
+
+// interface
+import {ITask} from "./interfaces/Task";
 
 function App() {
   return (
@@ -21,6 +24,7 @@ function App() {
         </div>
 
         <div>
+          <div></div>
           <h2>Suas tarefas</h2>
           <TaskList/>
         </div>
