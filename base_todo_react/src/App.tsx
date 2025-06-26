@@ -13,6 +13,8 @@ import styles from './App.module.css';
 import {ITask} from "./interfaces/Task";
 
 function App() {
+  const [taskList, setTaskList] = useState<ITask[]>([]);
+
   return (
     <div>
       <Header />
@@ -20,9 +22,8 @@ function App() {
       <main className={styles.main}>
         <div>
           <h2>O que você vai fazer?</h2>
-          <TaskForm btnText='Criar tarefa'/>
+          <TaskForm btnText='Criar tarefa' taskList={taskList} setTaskList={setTaskList}/>
         </div>
-
         <div>
           <div></div>
           <h2>Suas tarefas</h2>
@@ -34,6 +35,5 @@ function App() {
     </div>
   );
 }
-
 
 export default App;
