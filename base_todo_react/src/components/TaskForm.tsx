@@ -44,12 +44,26 @@ const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
   return <form onSubmit={addTaskHandler} className={styles.form}>
   <div className={styles.input_container}>
     <label htmlFor="title">Título:</label>
-    <input type="text" id="title" placeholder="Título da tarefa" onChange={handleChange} value={title}/>
+    <input
+  type="text"
+  id="title"
+  name="title"
+  placeholder="Título da tarefa"
+  onChange={handleChange}
+  value={title}
+/>
   </div>
 
   <div className={styles.input_container}>
     <label htmlFor="difficulty">Dificuldade:</label>
-    <input type="number" id="difficulty" placeholder="Dificuldade da tarefa" onChange={handleChange}value={difficulty}/>
+    <input
+  type="number"
+  id="difficulty"
+  name="difficulty"
+  placeholder="Dificuldade da tarefa"
+  onChange={handleChange}
+  value={difficulty}
+/>
   </div>
 
   <input type="submit" value={btnText} />
