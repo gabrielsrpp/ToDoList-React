@@ -5,6 +5,7 @@ import Header from './components/Header';
 import Footer from './components/Footer';
 import TaskForm from './components/TaskForm';
 import TaskList from './components/TaskList';
+import Modal from './components/Modal';
 
 // css 
 import styles from './App.module.css';
@@ -28,6 +29,7 @@ const deleteTask = (id: number) => {
 
   return (
     <div>
+      <Modal />
       <Header />
       
       <main className={styles.main}>
