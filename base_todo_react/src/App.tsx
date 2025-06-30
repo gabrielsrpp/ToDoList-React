@@ -1,4 +1,4 @@
-import React, {useState, ChangeEvent, FormEvent, useEffect} from 'react';
+import React, { useState } from 'react';
 
 // components
 import Header from './components/Header';
@@ -11,36 +11,48 @@ import Modal from './components/Modal';
 import styles from './App.module.css';
 
 // interface
-import {ITask} from "./interfaces/Task";
+import { ITask } from "./interfaces/Task";
 
 function App() {
   const [taskList, setTaskList] = useState<ITask[]>([]);
 
+  // controle de modal (opcional)
+  const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
 
-const deleteTask = (id: number) => {
-  setTaskList(
-    taskList.filter((task) => {
-      return task.id !== id;
-    })
-  );
-};
-
-
+  const deleteTask = (id: number) => {
+    setTaskList(taskList.filter((task) => task.id !== id));
+  };
 
   return (
     <div>
-      <Modal />
+      {isModalOpen && (
+        <Modal>
+          <TaskForm
+            btnText="Editar tarefa"
+            taskList={taskList}
+            setTaskList={setTaskList}
+          />
+        </Modal>
+      )}
+
       <Header />
       
       <main className={styles.main}>
         <div>
           <h2>O que você vai fazer?</h2>
-          <TaskForm btnText='Criar tarefa' taskList={taskList} setTaskList={setTaskList}/>
+          <TaskForm
+            btnText='Criar tarefa'
+            taskList={taskList}
+            setTaskList={setTaskList}
+          />
         </div>
+
         <div>
-          <div></div>
           <h2>Suas tarefas</h2>
-          <TaskList taskList={taskList} handleDelete={deleteTask}/>
+          <TaskList
+            taskList={taskList}
+            handleDelete={deleteTask}
+          />
         </div>
       </main>
       
