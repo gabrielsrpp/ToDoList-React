@@ -1,32 +1,30 @@
 import React, { useState } from 'react';
 
-// components
 import Header from './components/Header';
 import Footer from './components/Footer';
 import TaskForm from './components/TaskForm';
 import TaskList from './components/TaskList';
 import Modal from './components/Modal';
 
-// css 
 import styles from './App.module.css';
-
-// interface
 import { ITask } from "./interfaces/Task";
 
 function App() {
   const [taskList, setTaskList] = useState<ITask[]>([]);
-
-  // controle de modal (opcional)
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
 
   const deleteTask = (id: number) => {
     setTaskList(taskList.filter((task) => task.id !== id));
   };
 
+  const editTask = (): void => {
+    setIsModalOpen(true);
+  };
+
   return (
     <div>
       {isModalOpen && (
-        <Modal>
+        <Modal onClose={() => setIsModalOpen(false)}>
           <TaskForm
             btnText="Editar tarefa"
             taskList={taskList}
@@ -36,7 +34,7 @@ function App() {
       )}
 
       <Header />
-      
+
       <main className={styles.main}>
         <div>
           <h2>O que você vai fazer?</h2>
@@ -52,10 +50,11 @@ function App() {
           <TaskList
             taskList={taskList}
             handleDelete={deleteTask}
+            handleEdit={editTask}
           />
         </div>
       </main>
-      
+
       <Footer />
     </div>
   );
