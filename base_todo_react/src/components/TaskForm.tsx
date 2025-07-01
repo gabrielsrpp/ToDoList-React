@@ -50,6 +50,7 @@ const TaskForm = ({ btnText, taskList, setTaskList, task }: Props) => {
     }
   };
 
+  
   return (
     <form onSubmit={addTaskHandler} className={styles.form}>
       <div className={styles.input_container}>
