@@ -11,14 +11,16 @@ import { ITask } from "./interfaces/Task";
 
 function App() {
   const [taskList, setTaskList] = useState<ITask[]>([]);
+  const [taskToUpdate, setTaskToUpdate] = useState<ITask | null>(null);
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
 
   const deleteTask = (id: number) => {
     setTaskList(taskList.filter((task) => task.id !== id));
   };
 
-  const editTask = (): void => {
+  const editTask = (task: ITask): void => {
     setIsModalOpen(true);
+    setTaskToUpdate(task)
   };
 
   return (
@@ -29,6 +31,7 @@ function App() {
             btnText="Editar tarefa"
             taskList={taskList}
             setTaskList={setTaskList}
+            task={taskToUpdate}
           />
         </Modal>
       )}
